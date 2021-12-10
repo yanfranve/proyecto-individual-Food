@@ -17,12 +17,37 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+const server = require("./src/app.js");
+const { conn, Diet } = require("./src/db.js");
+const axios = require("axios");
+require("dotenv").config();
+const { PORT } = process.env;
 
-// Syncing all the models at once.
+
+var diets = [
+  "See All",
+  "Gluten Free",
+  "Dairy Free",
+  "Ketogenic",
+  "Lacto Ovo Vegetarian",
+  "Vegan",
+  "Pescatarian",
+  "Paleolithic",
+  "Primal",
+  "Whole 30",
+  "FODMAP Friendly",
+];
+
+// Sincronizando todos los modelos a la vez.
 conn.sync({ force: true }).then(() => {
-  server.listen(3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+  //le quite el force: true
+  server.listen(PORT, () => {
+    //axios.get(`${ro}complexSearch?${apiKey}${flag}`);
+    //podria usar un bulkCreate pero hago un map donde convierto los strings a objetos
+    diets = diets.map((d) => {
+      return { name: d };
+    });
+    diets = diets.map((d) => Diet.create(d));
+    console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
   });
 });
