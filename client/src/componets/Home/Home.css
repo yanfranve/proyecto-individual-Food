@@ -1,0 +1,27 @@
+.home-page {
+  background-image: url("../../images/food-plate-1.jpg");
+  padding: 20em;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#home-button {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(0deg, #16442b, #59981a);
+  padding: 30px 100px;
+  color: #fcf8ff;
+  font-size: 42px;
+  border-radius: 8px;
+  border-color: #ecf87f;
+  border-width: medium;
+  text-shadow: 2px 2px 4px #3d550c;
+  top: 80px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.4);
+  transition: all 0.4s ease;
+}
+
+#home-button:hover {
+  background: linear-gradient(0deg, #59981a, #ecf87f);
+  transition: all 0.4s ease;
+}
